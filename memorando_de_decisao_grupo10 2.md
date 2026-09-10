@@ -29,15 +29,14 @@ Campos disponíveis: RTT (tempo de ida e volta) das amostras ICMP, origem e dest
 Licença de uso: Creative Commons Attribution 4.0 International (CC BY 4.0). A licença permite compartilhar e adaptar os dados, desde que seja dado o devido crédito.
 Resumo do que foi encontrado:
 
+**Resumo do que foi encontrado:**
+
 O dataset Hats Network Global Latency Measurements reúne medições reais de latência entre pontos de presença (PoPs) da rede global da Hats Network. As medições são realizadas utilizando ICMP Echo, com cada par direcionado de pontos de presença sendo testado por 50 requisições ICMP a cada 100 ms. O conjunto possui mais de 342 pares direcionados e cobre 20 pontos de presença distribuídos pela Europa, América do Norte, América do Sul, Ásia-Pacífico e África.
 
 Os dados incluem os valores individuais de RTT e estatísticas resumidas, permitindo analisar latência, variação da latência e perda de pacotes. Como exemplo, na medição entre São Paulo (GRU) e Johannesburg (JNB), realizada em 16/08/2026, foram registrados 50 probes ICMP, com RTT médio de aproximadamente 333,8 ms no sentido São Paulo → Johannesburg e perda de aproximadamente 0,04%.
 
 Os dados são disponibilizados publicamente sob a licença CC BY 4.0.
 
-**Resumo do que foi encontrado:**
-
-[Escreva aqui, citando a fonte consultada]
 
 ## 3. Opção B — API do RIPE Atlas
 
@@ -99,29 +98,26 @@ Para reduzir esse problema, a análise pode utilizar diversos pares de origem e 
 - **O que fez nesta etapa:** `analisei a documentação da API do RIPE Atlas`
 - **Tempo dedicado (aprox.):** `55 minutos`
 - **Evidência da contribuição** *(print de conversa, rascunho, e-mail, documento compartilhado etc.)*:
-`(https://i.imgur.com/6a0uSMR.png)` 
-`(https://i.imgur.com/M1V84yz.png)`
+
 
 ### Integrante 2 — `Pedro Gabriel Castro da Silva`
 - **O que fez nesta etapa:** `realizei uma pesquisa de um data set real`
 - **Tempo dedicado (aprox.):**  `14 minutos `
 - **Evidência da contribuição** (print de conversa, rascunho, e-mail, documento compartilhado etc.):
-`(https://i.imgur.com/1XGtN0J.png)`
-`(https://i.imgur.com/Njhx3gf.png)`
+
+  
 
 ### Integrante 3 — `Luiz Eduardo dos Reis`
 - **O que fez nesta etapa:** `montei o arquivo do memorando`
 - **Tempo dedicado (aprox.):** `1h30`
 - **Evidência da contribuição** *(print de conversa, rascunho, e-mail, documento compartilhado etc.)*: 
-`https://i.imgur.com/4D9DGWz.png` 
-`https://i.imgur.com/QJMbANL.png`
+
 
 ### Integrante 4 — `Ricardo Aguilar Arapa`
 - **O que fez nesta etapa:** `tirei as prints para as evidências`
 - **Tempo dedicado (aprox.):** `30 minutos`
 - **Evidência da contribuição** *(print de conversa, rascunho, e-mail, documento compartilhado etc.)*: 
-`https://i.imgur.com/cK003xB.png` 
-`https://i.imgur.com/kKRhWUc.png`
+
 
 ### Integrante 5 — `[Escreva nome completo do aluno ]`
 - **O que fez nesta etapa:** `[]`
