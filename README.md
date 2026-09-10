@@ -4,17 +4,16 @@
 
 ## Objetivo
 
-O objetivo do projeto é desenvolver
+O objetivo deste projeto é desenvolver um sistema capaz de analisar dados relacionados ao envio de pacotes ICMP e utilizar essas informações para identificar ou prever possíveis falhas no envio dos pacotes.
 
----
 
 ## Descrição do Projeto
 
----
+O projeto tem como foco o monitoramento da comunicação de rede por meio de pacotes ICMP (Internet Control Message Protocol).
 
----
+A partir dos dados coletados, serão analisadas características como latência, perda de pacotes e jitter, que serão utilizadas como informações para o desenvolvimento do preditor de falhas.
 
----
+A proposta é transformar os dados de rede em um formato adequado para análise e, posteriormente, utilizar técnicas de aprendizado de máquina para identificar padrões que possam indicar possíveis problemas ou falhas no envio dos pacotes.
 
 ## Integrantes do Grupo
 
@@ -35,16 +34,15 @@ O objetivo do projeto é desenvolver
 A organização do projeto está dividida da seguinte forma:
 
 
-┏─  📁 Network Failure Predictor/
+┌── 📄 memorando_de_decisao_grupo10 2.md
 │   
-├── 📄 memorando_de_decisao_grupo10 2.md
 └── 📄 README.md
 
 
 
 ## Tecnologias Utilizadas
 
-* ---
+* API RIPE do Atlas
 * ---
 * ---
 
