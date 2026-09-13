@@ -34,8 +34,11 @@ A proposta é transformar os dados de rede em um formato adequado para análise 
 A organização do projeto está dividida da seguinte forma:
 
 
-┌── 📄 memorando_de_decisao_grupo10 2.md
-│   
+┌── 📁Doc
+│    └───── 📄 memorando_de_decisao_grupo10 2.md
+┠──📁 Notebooks
+│   └─────  📄 Coleta de Dados.ipynb
+│ 
 └── 📄 README.md
 
 
@@ -43,7 +46,7 @@ A organização do projeto está dividida da seguinte forma:
 ## Tecnologias Utilizadas
 
 * API RIPE do Atlas
-* ---
+* Google Collab
 * ---
 
 ## Observações
