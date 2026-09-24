@@ -51,5 +51,5 @@ A organização do projeto está dividida da seguinte forma:
 * O repositório deve estar acessível para consulta.
 * Todos os integrantes do grupo devem estar identificados neste README.
 * Os arquivos e códigos desenvolvidos até o momento devem estar disponíveis no repositório.
-* As pastas e arquivos devem permanecer organizados.
+* As pastas e arquivos devem permanecer organizados
 * Não devem ser incluídas senhas, tokens, chaves de API ou outros dados confidenciais no repositório.
