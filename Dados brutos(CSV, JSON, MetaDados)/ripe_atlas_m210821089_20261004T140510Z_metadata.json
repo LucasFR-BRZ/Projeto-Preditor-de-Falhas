@@ -1,0 +1,147 @@
+{
+  "projeto": "Network Failure Predictor",
+  "measurement_id": 210821089,
+  "url_resultados": "https://atlas.ripe.net/api/v2/measurements/210821089/results/",
+  "url_metadados": "https://atlas.ripe.net/api/v2/measurements/210821089/",
+  "parametros": {
+    "start": 1789231475,
+    "stop": 1789236869
+  },
+  "inicio_utc": "2026-09-12T16:44:35+00:00",
+  "fim_utc": "2026-09-12T18:14:29+00:00",
+  "coletado_em_utc": "2026-10-04T14:05:10.921372+00:00",
+  "status_http_resultados": 200,
+  "status_http_metadados": 200,
+  "quantidade_registros": 1511,
+  "quantidade_colunas_dataframe": 26,
+  "quantidade_sondas_distintas": 17,
+  "registros_com_rcvd_zero": 0,
+  "registros_com_sent_zero": 0,
+  "registros_duplicados": 0,
+  "metadados_medicao": {
+    "measurement_id": 210821089,
+    "publica": true,
+    "tipo": "ping",
+    "target": "104.26.0.151",
+    "target_ip": "104.26.0.151",
+    "target_asn": 13335,
+    "intervalo_segundos": 60,
+    "status": "Stopped",
+    "is_oneoff": false,
+    "probes_requested": 0,
+    "probes_scheduled": 17,
+    "participant_count": 17,
+    "start_time": 1789231475,
+    "stop_time": 1789236869
+  },
+  "colunas": [
+    {
+      "coluna": "fw",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "lts",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "dst_name",
+      "tipo": "object"
+    },
+    {
+      "coluna": "af",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "dst_addr",
+      "tipo": "object"
+    },
+    {
+      "coluna": "src_addr",
+      "tipo": "object"
+    },
+    {
+      "coluna": "proto",
+      "tipo": "object"
+    },
+    {
+      "coluna": "ttl",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "size",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "result",
+      "tipo": "object"
+    },
+    {
+      "coluna": "dup",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "rcvd",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "sent",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "min",
+      "tipo": "float64"
+    },
+    {
+      "coluna": "max",
+      "tipo": "float64"
+    },
+    {
+      "coluna": "avg",
+      "tipo": "float64"
+    },
+    {
+      "coluna": "msm_id",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "prb_id",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "timestamp",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "msm_name",
+      "tipo": "object"
+    },
+    {
+      "coluna": "from",
+      "tipo": "object"
+    },
+    {
+      "coluna": "type",
+      "tipo": "object"
+    },
+    {
+      "coluna": "group_id",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "step",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "stored_timestamp",
+      "tipo": "int64"
+    },
+    {
+      "coluna": "mver",
+      "tipo": "object"
+    }
+  ],
+  "arquivo_json": "ripe_atlas_m210821089_20261004T140510Z.json",
+  "arquivo_tabelar": "ripe_atlas_m210821089_20261004T140510Z.csv",
+  "arquivo_metadados": "ripe_atlas_m210821089_20261004T140510Z_metadata.json",
+  "observacao": "Camada raw: o JSON original é preservado e o CSV é uma representação tabular. Não foram realizadas limpeza, agregação, rotulação ou treinamento nesta etapa."
+}
