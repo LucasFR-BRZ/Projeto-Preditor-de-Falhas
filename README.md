@@ -33,16 +33,16 @@ A proposta é transformar os dados de rede em um formato adequado para análise 
 
 A organização do projeto está dividida da seguinte forma:
 
-📁 Projeto-Preditor-de-Falhas
-├── 📁 Dados brutos(CSV, JSON, MetaDados)
-│   ├── 📄 ripe_atlas_m210821089_20261004T140510Z.csv
-│   ├── 📄 ripe_atlas_m210821089_20261004T140510Z.json
-│   └── 📄 ripe_atlas_m210821089_20261004T140510Z_metadata.json
-├── 📁 Doc
-│   └── 📄 memorando_de_decisao_grupo10_2.md
-├── 📁 Notebooks
-│   └── 📄 Coleta_de_dados_corrigido.ipynb
-└── 📄 README.md
+📁 Projeto-Preditor-de-Falhas  
+├── 📁 Dados brutos(CSV, JSON, MetaDados)  
+│   ├── 📄 ripe_atlas_m210821089_20261004T140510Z.csv  
+│   ├── 📄 ripe_atlas_m210821089_20261004T140510Z.json  
+│   └── 📄 ripe_atlas_m210821089_20261004T140510Z_metadata.json  
+├── 📁 Doc  
+│   └── 📄 memorando_de_decisao_grupo10_2.md  
+├── 📁 Notebooks  
+│   └── 📄 Coleta_de_dados_corrigido.ipynb  
+└── 📄 README.md  
 
 ## Tecnologias Utilizadas
 
