@@ -44,7 +44,7 @@ A organização do projeto está dividida da seguinte forma:
 
 * API RIPE do Atlas
 * Google Collab
-* ---
+* Visual Studio Code
 
 ## Observações
 
