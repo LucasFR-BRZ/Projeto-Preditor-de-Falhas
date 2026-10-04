@@ -33,11 +33,17 @@ A proposta é transformar os dados de rede em um formato adequado para análise 
 
 A organização do projeto está dividida da seguinte forma:
 
-┌──📁Doc    
-│    └───── 📄 memorando_de_decisao_grupo10 2.md     
+┠──📁 Dados brutos(CSV, JSON, MetaDados)
+│   └─────  📄 ripe_atlas_m210821089_20261004T140510Z
+│   └─────  📄 ripe_atlas_m210821089_20261004T140510Z
+│   └─────  📄 ripe_atlas_m210821089_20261004T140510Z_metadata
+│
+┠──📁Doc    
+│    └───── 📄 memorando_de_decisao_grupo10 2.md   
+│
 ┠──📁 Notebooks   
-│   └─────  📄 Coleta de Dados.ipynb    
-│      
+│   └─────  📄 Coleta_de_dados_corrigido.ipynb    
+│
 └── 📄 README.md     
 
 ## Tecnologias Utilizadas
