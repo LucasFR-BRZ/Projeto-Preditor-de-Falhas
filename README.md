@@ -21,7 +21,7 @@ A proposta é transformar os dados de rede em um formato adequado para análise 
 * Pedro Gabriel Castro da Silva -- 42832152	
 * Ricardo Aguilar Arapa -- 42628156
 * Luiz Eduardo dos Reis -- 42973759
-* Rodrigo Camargo Vieira
+* Rodrigo Camargo Vieira -- 48802565
 
 ## Informações da Entrega
 
