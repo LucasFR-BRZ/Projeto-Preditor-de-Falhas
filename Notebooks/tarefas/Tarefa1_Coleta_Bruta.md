@@ -78,7 +78,7 @@ Regras da coleta:
 
 ## 3. Relatório de qualidade — ainda sem classe
 
-- [ ] Registros por `fluxo_id`
+- [X] Registros por `fluxo_id`
 - [ ] Início e fim de cada fluxo
 - [ ] Campos ausentes (RTT vazio é ausência, não zero)
 - [ ] Duplicatas
