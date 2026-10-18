@@ -73,11 +73,19 @@ Fontes: documentação oficial do RIPE Atlas sobre autenticação, criação de 
 
 Infomações sobre coleta:
 ---
-Coleta inicial - 17/10/2026
+**Coleta inicial** - 17/10/2026 Período A
 
-Total de medições - 8
+**Total de medições** - 8
 
-Tempo de medição - 2 horas 
+**Tempo de medição** - 2 horas
+
+---
+
+**Coleta** - 18/10/2026 Período B
+
+**Total de medições** - 8
+
+**Tempo de medição** - 2 horas 
 
 ## 4. Comparação
 
@@ -204,3 +212,18 @@ Por isso, a Hats continua sendo uma boa opção para começar o projeto, mas com
 ---
 
 ---
+
+## Registro da coleta — Período B
+
+**Data da coleta:** 18/10/2026
+
+**Fonte:** RIPE Atlas — medições ICMP Ping
+
+**Medições:** 8
+
+**Intervalo observado:** aproximadamente 13h04 a 15h03 UTC (10h04 a 12h03 no horário de Brasília).
+Registros obtidos: 219.757 registros somados nos oito arquivos JSON.
+
+**Arquivos:** resultados JSON e respectivos arquivos de metadados, armazenados separadamente na pasta do período B.
+
+**Observação:** a coleta do período B contém aproximadamente duas horas de registros. Foram utilizados os mesmos oito identificadores de medição do período A, permitindo organizar os dados para comparação entre períodos distintos. Ainda será necessário avaliar a qualidade, a distribuição e a suficiência dos dados para o objetivo preditivo do projeto.
