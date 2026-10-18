@@ -1,13 +1,13 @@
 # Diário da Tarefa 1 — Problema e coleta bruta (sem rótulo)
 
-**Período:** 17/08/2026 a 17/09/2026  
+**Período:** 17/10/2026 a 18/10/2026  
 **Projeto:** Preditor de degradação de rede com RTT normalizado (independente da rota)  
 **Modelo desta disciplina:** árvore de decisão. Nesta tarefa não se treina árvore.
 
 **Equipe: 10**  
 **Integrantes: Pedro Gabriel Castro da Silva, Lucas Felix Romero, Rodrigo Camargo Vieira, Luiz Eduardo dos Reis, Ricardo Aguilar Arapa**  
 **Scrum Master da tarefa: Andrea Ono Sakai**  
-**Repositório GitHub: https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas/blob/main/Notebooks/Coleta_de_dados_corrigido2.ipynb**
+**Repositório GitHub: https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas**
 
 > Esta tarefa entrega o problema e o **dado cru**. Não há classe OK, RISCO ou FALHA. Não há baseline, não há mediana e não há árvore. Quem rotular aqui mistura a coleta com a decisão da Tarefa 2.
 >
@@ -40,8 +40,8 @@ Responder no diário. A resposta tem de bater com o RFC.
 | Quem usa o alerta? | Quem opera o enlace: investigar (FALHA), observar (RISCO) ou não agir (OK). |
 | O que está proibido como definição de falha? | Limiar global de RTT, país, continente ou nome da rota. |
 
-- [ ] RFC do grupo preenchido a partir desta tabela
-- [ ] Dicionário v0.1 só com variáveis brutas
+- [X] RFC do grupo preenchido a partir desta tabela
+- [X] Dicionário v0.1 só com variáveis brutas
 
 ## 2. O que coletar (e o que não criar)
 
@@ -65,29 +65,93 @@ Cada registro bruto guarda, quando a API trouxer:
 
 Regras da coleta:
 
-- [ ] Vários fluxos, com pelo menos um caminho curto e um caminho longo no mesmo período
-- [ ] A diversidade geográfica está documentada e **não** virou classe
-- [ ] Dois blocos de tempo contíguos, sem amostra nos dois: Período A (só para o baseline da Tarefa 2) e Período B (medições que serão rotuladas). Referência do projeto: 7 dias + 7 dias a partir de 06/09/2026 04:32 UTC. Outro recorte só vale se os dois blocos continuarem sem sobreposição e o A tiver volume para o mínimo da Tarefa 2
-- [ ] Timeout permanece no arquivo
-- [ ] JSON bruto preservado; a tabela tratada não apaga o bruto
-- [ ] Parâmetros (período, probes, destinos) em `config/`, não espalhados no código
-- [ ] HTTP com timeout, releitura em erro transitório e coleta idempotente (rodar de novo não duplica)
+- [X] Vários fluxos, com caminhos curtos e longos na coleta
+- [X] A diversidade geográfica está documentada e não virou classe
+- [X] Dois períodos coletados sem sobreposição; não são blocos contíguos
+
+Período A — 17/10/2026
+
+Aproximadamente 20h00–22h00 UTC, equivalente a 17h00–19h00 no horário de Brasília.
+226.053 registros brutos somados nos 8 arquivos.
+
+Período B — 18/10/2026
+
+Aproximadamente 13h04–15h03 UTC, equivalente a 10h04–12h03 no horário de Brasília.
+219.757 registros brutos somados nos 8 arquivos.
+
+Os períodos A e B ocorreram em dias diferentes, sem sobreposição, mas não são contíguos. Cada período corresponde a aproximadamente duas horas de coleta, e não a um dia completo.
+
+- [X] JSONs brutos preservados
+- [ ] Confirmar e documentar a regra de tratamento de respostas duplicadas e contadores de pacotes
+- [ ] HTTP com timeout, releitura em erro transitório e coleta idempotente
 - [ ] `requirements.txt` da coleta
 
 **Evidências (notebook, commit, trecho do config):**
 
 ## 3. Relatório de qualidade — ainda sem classe
 
-- [X] Registros por `fluxo_id`
-- [ ] Início e fim de cada fluxo
-- [ ] Campos ausentes (RTT vazio é ausência, não zero)
-- [ ] Duplicatas
-- [ ] Quantidade de timeouts
-- [ ] RTT e perda descritos (mínimo, mediana, máximo) **sem** dizer OK, RISCO ou FALHA
+- [X] Quantidade de registros por arquivo de medição
+- [X] Verificação dos campos obrigatórios básicos (`timestamp`, `prb_id`, `dst_addr`)
+- [X] Verificação inicial de duplicatas exatas
+- [X] Identificação preliminar de registros sem RTT e de perda total
+- [X] Estatísticas iniciais de RTT e perda por arquivo
+- [ ] Consolidar início e fim de cada fluxo no relatório final
+- [ ] Validar definitivamente a contagem de timeouts e a perda de pacotes
+- [ ] Definir o tratamento de respostas duplicadas
+- [ ] Investigar os RTTs extremos nos arquivos
+- [ ] Finalizar o relatório de qualidade por fluxo
 
-**N de registros brutos: 8**  
-**N de fluxos: 8**  
-**Caminho curto e caminho longo presentes (quais):**
+**N de arquivos de resultados: 16**
+
+**N de registros brutos: 445.810**
+
+**N de fluxos previstos: 8**, correspondentes às 8 medições e aos pares de origem e destino identificados na coleta. Confirmar a unicidade de cada `fluxo_id` antes da preparação dos dados.
+
+### Resumo da coleta
+
+| Período | Arquivos | Registros brutos |
+|---|---:|---:|
+| A — 17/10/2026 | 8 | 226.053 |
+| B — 18/10/2026 | 8 | 219.757 |
+| **Total** | **16** | **445.810** |
+
+### Verificações iniciais
+
+- Os 16 arquivos foram encontrados e lidos.
+- Todos os registros analisados eram objetos JSON.
+- Não foram encontradas duplicatas exatas excedentes na verificação inicial.
+- Foram identificados 6.711 registros sem RTT.
+- Foram identificados 6 registros com `rcvd = 0` que, apesar disso, continham pelo menos uma resposta com RTT dentro de `result`.
+- A diferença exige cuidado na interpretação de `rcvd`, das respostas marcadas como `dup` e da perda de pacotes.
+- Respostas marcadas como duplicadas foram encontradas nos arquivos. Isso não significa que o registro inteiro deva ser excluído.
+- Foram encontrados RTTs acima de 1.000 ms em diferentes arquivos.
+- O maior RTT observado na investigação foi de 16.200,150 ms, na medição 203894195 do período B.
+- Os valores extremos e as inconsistências foram preservados para investigação. Nenhum dado bruto foi apagado ou alterado.
+
+Os números de registros sem RTT e de perda total são contagens preliminares. A regra definitiva de cálculo deve ser validada antes da criação da tabela tratada.
+
+### Caminhos curtos e longos
+
+Finlândia -> Porto Alegre, Brasil
+
+Finlândia -> Paris, França
+
+Finlândia -> Zug, Suíça
+
+França -> Düsseldorf, Alemanha
+
+Finlândia -> Umm ash Sha'um, Bahrein
+
+Finlândia -> Buenos Aires, Argentina
+
+Finlândia -> Santa Cruz, Costa Rica
+
+Finlândia -> Ostend, Alemanha
+
+**Observação:** 
+
+Os dados continuam sem classes OK, RISCO ou FALHA. As verificações descritas nesta seção são de qualidade da coleta, não de desempenho de modelo.
+
 
 ## 4. Scrum
 
@@ -107,13 +171,11 @@ Critério de aceitação: o JSON original deve ser preservado, os RTTs ausentes 
 
 Critério de aceitação: os intervalos devem estar documentados na configuração, sem sobreposição, e os dados devem permanecer sem classes OK, RISCO ou FALHA. 
 
-**Link do board: https://atlas.ripe.net/**
-
 ## 5. Diário de bordo
 
 | Integrante | O que fiz nesta tarefa | Dificuldades | O que pretendo manter/ajustar |
 |---|---|---|---|
-|Pedro Gabriel | Pesquisa dos probes| Probes expirados | |
+|Pedro Gabriel | Coleta dos dados - pesquisa de rotas - organização e retificação de memorando e documentos | nenhuma |  |
 |Rodrigo Camargo | Pesquisa dos probes|Probes expirados | |
 |Lucas Felix | estruturamento da coleta |Configurar o código de coleta |estrutura do JSON |
 |Luiz Eduardo | Pesquisa dos probes|Probes expirados | |
@@ -122,9 +184,9 @@ Critério de aceitação: os intervalos devem estar documentados na configuraç�
 ## 6. Evidências gerais
 
 - Link do RFC:https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas/blob/main/Doc/memorando_de_decisao_grupo10.md
-- Link do dicionário v0.1: 
+- Link do dicionário v0.1: https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas/blob/main/Dicionario.md
 - Link dos commits: https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas/commits/main/
-- Link de `data/raw/` e do `config/`: https://drive.google.com/drive/folders/1pF0rNDtvEVErohRlAvmZZtZDmRZDeCVG?hl=pt-br
+- Link de `data/raw/` e do `config/`: https://drive.google.com/drive/folders/1UfmsrJEPZk8unb-jvsTGe12A9NliK-iR?hl=pt-br
 
 ---
 
