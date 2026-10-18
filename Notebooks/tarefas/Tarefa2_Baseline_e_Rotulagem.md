@@ -1,11 +1,11 @@
 # Diário da Tarefa 2 — Baseline do fluxo e rotulagem OK, RISCO, FALHA
 
-**Período:** 18/09/2026 a 30/09/2026  
+**Período:** 17/10/2026 a 18/10/2026  
 **Projeto:** Preditor de degradação de rede com RTT normalizado (independente da rota)
 
-**Equipe:**  
-**Scrum Master da tarefa:**  
-**Repositório GitHub:**
+**Equipe:** Grupo 10  
+**Scrum Master da tarefa:** Andrea Ono Sakai    
+**Repositório GitHub:** https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas
 
 > Esta tarefa lê o `data/raw/` da Tarefa 1. Não troca a coleta sem versionar.
 >
@@ -29,7 +29,7 @@
 
 **Não sai daqui:** árvore treinada, profundidade escolhida, acurácia, F1.
 
-- [ ] O notebook lê o bruto da Tarefa 1
+- [X] O notebook lê o bruto da Tarefa 1
 
 ---
 
@@ -39,13 +39,13 @@
 
 `data/raw/` permanece intocado. A auditoria vai para o diário; a tabela de trabalho, para `data/interim/`.
 
-- [ ] Contagem de linhas, fluxos, duplicatas e RTT vazio
-- [ ] Nenhum RTT ausente foi gravado como 0
-- [ ] Período A e Período B não compartilham timestamp do mesmo fluxo
+- [X] Contagem de linhas, fluxos, duplicatas e RTT vazio
+- [X] Nenhum RTT ausente foi gravado como 0
+- [X] Período A e Período B não compartilham timestamp do mesmo fluxo
 
-**N bruto:**  
-**N de fluxos:**  
-**Evidências:**
+**N bruto:** 445.810    
+**N de fluxos:** 7.553  
+**Evidências:** https://drive.google.com/drive/folders/1hS3CXLzTZaNXL4UHPHOvzcPna6AtZ5_-?hl=pt-br
 
 ## 2. Como obter o baseline
 
@@ -71,12 +71,16 @@ Uma ficha por `fluxo_id`. Só o Período A. O Período B não entra na conta e n
 | `prop_resposta` | medições com RTT válido / medições do período              |
 
 
-- [ ] Ficha conferida em pelo menos um fluxo curto e um fluxo longo (as medianas podem ser muito diferentes; as duas são “normal”)
-- [ ] Lista dos fluxos excluídos e o motivo (contagem abaixo de 1.500)
+- [X] Ficha conferida em pelo menos um fluxo curto e um fluxo longo (as medianas podem ser muito diferentes; as duas são “normal”)
+- [X] Lista dos fluxos excluídos e o motivo (contagem abaixo de 1.500)
 
-**Fluxos com ficha:**  
-**Fluxos excluídos:**  
-**Exemplo auditável (fluxo curto: mediana; fluxo longo: mediana):**
+**Fluxos com ficha:** 7.415  
+**Fluxos excluídos:** 138    
+**Exemplo auditável (fluxo curto: mediana; fluxo longo: mediana):** 
+
+Fluxo curto: 7807|37.131.15.98 — mediana: 0,094913 ms; MAD: 0,037014 ms; 30 RTTs válidos.
+
+Fluxo longo: 7623|200.9.157.207 — mediana: 562,505419 ms; MAD: 71,695463 ms; 30 RTTs válidos.   
 
 ## 3. Métricas de cada medição do Período B
 

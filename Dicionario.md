@@ -1,5 +1,5 @@
 
-# Dicionário de Dados — Preditor de Falhas de Rede
+# Dicionário de Dados — Preditor de Falhas de Rede (v0.2)
 
 ## 1. Objetivo
 
@@ -107,24 +107,26 @@ A localização da origem pode ser obtida por meio dos metadados da sonda no RIP
 
 A localização geográfica aproximada de um IP não comprova, por si só, o caminho percorrido pelos pacotes. Para investigar os roteadores intermediários, podem ser necessárias medições adicionais, como `traceroute`.
 
+
 ## 8. Finalidade dos dados no projeto
 
-Os dados serão utilizados para investigar possíveis relações entre características das conexões e a ocorrência de problemas de rede.
+Os dados coletados pelo RIPE Atlas são utilizados para analisar o comportamento das conexões de rede ao longo do tempo e identificar possíveis sinais de degradação ou falha.
 
-Entre as variáveis que podem ser analisadas estão:
+A análise utiliza os resultados individuais de RTT, os tempos de resposta, a quantidade de pacotes enviados e recebidos e os horários das medições. Também são considerados os identificadores da sonda e do endereço IP de destino para agrupar as medições por fluxo.
 
-- Tempo médio de resposta (`avg`).
-- Menor e maior tempo de resposta (`min` e `max`).
-- Quantidade de pacotes enviados e recebidos (`sent` e `rcvd`).
-- Resultados individuais de RTT.
-- Horários das medições.
-- Países e continentes associados à origem e ao destino.
+Para comparar o comportamento das conexões, os dados foram organizados em dois períodos:
 
-A localização geográfica poderá ser utilizada para agrupar e comparar medições realizadas entre diferentes regiões.
+- **Período A:** utilizado para calcular o baseline de cada fluxo, que serve como referência do comportamento observado.
+- **Período B:** utilizado para calcular métricas em relação ao baseline, classificar as medições e preparar os conjuntos de treino, validação e teste.
 
-Entretanto, uma distância geográfica maior não implica necessariamente maior latência ou ocorrência de falhas. O desempenho também depende de fatores como roteamento, congestionamento e infraestrutura de rede.
+Entre as métricas calculadas estão o desvio robusto do RTT, o aumento percentual do tempo de resposta, o jitter, o percentual de perda de pacotes e a ocorrência de timeouts.
 
-Da mesma forma, um tempo de resposta elevado, isoladamente, não comprova uma falha. Os critérios de classificação deverão ser definidos durante o desenvolvimento do projeto.
+Com base nessas métricas e em critérios definidos por regras heurísticas, as medições do Período B são classificadas como `OK`, `RISCO` ou `FALHA`. Essas classificações representam os critérios adotados pelo projeto e não comprovam, isoladamente, a ocorrência de uma falha real na infraestrutura de rede.
+
+A localização geográfica poderá ser utilizada para agrupar e comparar medições entre diferentes regiões. Entretanto, a distância geográfica, por si só, não determina a latência ou a ocorrência de falhas, pois o desempenho também depende de fatores como roteamento, congestionamento e infraestrutura de rede.
+
+Nesta etapa, os dados foram preparados e divididos cronologicamente por fluxo. O treinamento e a avaliação de um modelo preditivo permanecem como etapas posteriores do projeto.
+
 
 ## 9. Observações sobre a qualidade dos dados
 
@@ -133,3 +135,76 @@ Da mesma forma, um tempo de resposta elevado, isoladamente, não comprova uma fa
 3. Os metadados de uma sonda podem se repetir em diversos registros, pois a mesma sonda pode executar várias medições.
 4. As localidades dos destinos devem ser verificadas antes de serem consideradas definitivas.
 5. Os dados originais devem ser preservados, mantendo separadas as informações coletadas e as informações geográficas acrescentadas posteriormente.
+
+
+## 10. Identificação dos fluxos e baseline
+
+Um fluxo é identificado pela combinação de `prb_id` e `dst_addr`, representada por `prb_id|dst_addr`.
+
+O baseline é calculado com os dados do Período A e funciona como referência para avaliar as medições do Período B.
+
+| Campo | Descrição |
+|---|---|
+| `fluxo_id` | Identificador composto da sonda e do IP de destino. |
+| `n_rtt_validos_A` | Quantidade de RTTs válidos do fluxo no Período A. |
+| `mediana` | Mediana dos RTTs válidos do Período A, em milissegundos. |
+| `MAD` | Mediana dos desvios absolutos em relação à mediana do baseline. |
+| `status_baseline` | Indica se o fluxo possui amostras suficientes para análise. |
+
+Para esta etapa, foi adotado provisoriamente o mínimo de 20 RTTs válidos por fluxo, em substituição ao requisito original de 1.500, devido à quantidade disponível na coleta.
+
+## 11. Métricas calculadas no Período B
+
+| Campo | Descrição |
+|---|---|
+| `rtt_ms` | RTT utilizado na análise da medição atual, em milissegundos. |
+| `z_robusto` | Desvio do RTT em relação ao baseline, normalizado pela dispersão robusta. |
+| `aumento_pct` | Variação percentual do RTT atual em relação à mediana do baseline. |
+| `jitter_atual` | Diferença absoluta entre RTTs válidos consecutivos do mesmo fluxo, respeitando o intervalo temporal definido. |
+| `jitter_relativo` | Relação entre o jitter atual e o jitter típico do baseline. |
+| `perda_pct` | Percentual de perda calculado a partir dos pacotes enviados e recebidos. |
+| `timeout_atual` | Indica ausência de RTT válido ou perda calculada de 100%. |
+| `n5_timeout` | Quantidade de timeouts nas últimas cinco medições do fluxo, incluindo a atual. |
+| `n5_aumento80` | Quantidade de aumentos de RTT superiores a 80% nas últimas cinco medições. |
+| `n5_risco` | Quantidade de medições nas últimas cinco que atendem a pelo menos um critério individual de risco. |
+
+## 12. Classificação das medições
+
+As medições do Período B recebem um dos seguintes rótulos:
+
+- `OK`: nenhum critério de risco ou falha foi atendido.
+- `RISCO`: a medição atende a pelo menos um critério individual de risco e a condição de recorrência definida.
+- `FALHA`: pelo menos um critério de falha foi atendido.
+
+As regras são aplicadas na seguinte ordem:
+
+1. `FALHA` se `perda_pct >= 10`.
+2. `FALHA` se `n5_timeout >= 3`.
+3. `FALHA` se `z_robusto >= 3.5`, havendo RTT válido.
+4. `FALHA` se `n5_aumento80 >= 2`.
+5. `RISCO` se pelo menos um critério individual de risco for atendido e `n5_risco >= 2`.
+6. `OK` nos demais casos.
+
+Os critérios individuais de risco são:
+
+- `2 <= z_robusto < 3.5`;
+- `30 <= aumento_pct <= 80`;
+- `jitter_relativo >= 3`.
+
+Esses rótulos são definidos por regras heurísticas e não representam, por si só, uma confirmação independente de falha real na rede.
+
+## 13. Divisão temporal dos dados
+
+O Período B foi dividido cronologicamente dentro de cada fluxo:
+
+- Treino: aproximadamente 50% iniciais.
+- Validação: aproximadamente 20% seguintes.
+- Teste: aproximadamente 30% finais.
+
+Os conjuntos são utilizados para preparar uma futura etapa de treinamento e avaliação. Nesta tarefa, a divisão foi realizada, mas nenhum modelo de árvore de decisão foi treinado.
+
+## 14. Histórico de versões
+
+- **v0.1:** documentação inicial da fonte dos dados, campos originais, metadados das sondas e informações geográficas.
+- **v0.2:** inclusão da identificação dos fluxos, baseline, métricas calculadas, regras de classificação e divisão temporal dos dados.
+
