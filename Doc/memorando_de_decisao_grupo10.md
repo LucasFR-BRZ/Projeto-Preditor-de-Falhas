@@ -13,7 +13,7 @@
 
 ## 1. Situação
 
-A equipe precisa decidir se, na próxima etapa do projeto, deve utilizar um dataset real de ICMP já publicado ou coletar novos dados por meio da API do RIPE Atlas, buscando a opção que melhor atenda ao pipeline de transformação dos dados em janelas e, depois, em X = latência, perda, jitter.
+A equipe decidiu realizar a coleta de novos dados através da RIPE ATLAS.
 
 ## 2. Opção A — Dataset real
 Origem / link: Hats Network — Global Latency Measurements
@@ -71,6 +71,14 @@ Por outro lado, utilizar a API exige um pouco mais de configuração. Também ex
 
 Fontes: documentação oficial do RIPE Atlas sobre autenticação, criação de medições, resultados e créditos.
 
+Infomações sobre coleta:
+---
+Coleta inicial - 17/10/2026
+
+Total de medições - 8
+
+Tempo de medição - 2 horas 
+
 ## 4. Comparação
 
 | Critério | Opção A — Dataset real | Opção B — API RIPE Atlas |
@@ -80,16 +88,25 @@ Fontes: documentação oficial do RIPE Atlas sobre autenticação, criação de 
 | Custo / complexidade de implementação |Baixo: os dados já estão coletados e disponíveis em formatos estruturados.|Maior: é necessário utilizar a API e configurar/acompanhar medições.|
 | Tempo até os primeiros dados estarem disponíveis |Imediato: os dados já estão disponíveis para download.|Maior: é necessário criar a medição e aguardar sua execução.|
 
+Após a análise comparativa, a equipe iniciou a implementação utilizando os resultados de medições do RIPE Atlas, mantendo o dataset da Hats Network como alternativa avaliada.
+---
+
+
 ## 5. Recomendação
 
-Recomenda-se a Opção A — Hats Network Global Latency Measurements.
+Recomenda-se a Opção B — RIPE ATLAS
 
 ## 6. Justificativa
 
 
-A Opção A é recomendada porque fornece dados reais de medições ICMP já coletados, incluindo RTT, variação da latência e perda de pacotes, permitindo iniciar a análise imediatamente. Além disso, o dataset possui cobertura geográfica internacional e inclui um ponto de presença em São Paulo, possibilitando análises envolvendo o Brasil. Os dados também são disponibilizados em formatos estruturados e sob uma licença aberta CC BY 4.0.
 
-A principal vantagem em relação à API do RIPE Atlas é a menor complexidade inicial: não é necessário configurar uma infraestrutura de coleta para obter os primeiros dados. Por outro lado, o RIPE Atlas possui como vantagem o maior controle sobre as medições, permitindo definir novos experimentos conforme os objetivos do projeto.
+A utilização do RIPE Atlas foi escolhida para iniciar a implementação do projeto Network Failure Predictor por permitir o acesso a resultados reais de medições de rede, incluindo informações de latência, perda de pacotes e tempo de resposta dos pings.
+
+A API disponibiliza resultados em formato estruturado, permitindo que os dados sejam organizados e transformados em janelas temporais para o cálculo das características utilizadas pelo modelo preditivo. Além disso, a possibilidade de consultar medições de diferentes origens e destinos permite analisar o comportamento da rede em diferentes condições.
+
+A equipe já realizou uma coleta inicial de oito medições, armazenando os resultados em arquivos JSON acompanhados de seus respectivos arquivos de metadados. Essa etapa permitiu iniciar a organização dos dados e verificar sua estrutura para as próximas fases do projeto.
+
+Embora a Hats Network também apresente dados adequados para análises de latência, o RIPE Atlas oferece flexibilidade para selecionar medições e consultar seus resultados conforme as necessidades do projeto. A suficiência dos dados para treinamento e avaliação ainda deverá ser verificada durante a etapa de preparação e análise.
 
 ## 7. Riscos e limitações
 
@@ -163,3 +180,27 @@ Por isso, a Hats continua sendo uma boa opção para começar o projeto, mas com
 
 ## 8 - RIPE Atlas — REST API Reference — Results:(https://atlas.ripe.net/docs/apis/rest-api-reference/measurements/measurements_results)
 
+---
+
+---
+
+## Registro da coleta inicial — Período A
+
+**Data da coleta:** 17/10/2026
+
+**Fonte:** RIPE Atlas — medições ICMP Ping
+
+**Medições:** 8
+
+**Intervalo observado:** aproximadamente 20h00 a 22h00 UTC
+(17h00 a 19h00 no horário de Brasília)
+
+**Arquivos:** resultados JSON e respectivos arquivos de metadados.
+
+**Observação:** a coleta inicial contém aproximadamente duas horas de registros. Ainda será necessário verificar se esse volume é suficiente para o objetivo do projeto.
+
+**Próxima etapa:** realizar uma nova coleta em 18/10/2026, salvando os arquivos separadamente para comparação com a coleta inicial.
+
+---
+
+---
