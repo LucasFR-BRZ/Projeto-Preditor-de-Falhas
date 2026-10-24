@@ -60,7 +60,7 @@ A organização do repositório contempla a documentação, os notebooks e os da
 ```text
 Projeto-Preditor-de-Falhas/
 ├── DATA/
-│   └── Arquivos JSON das medições coletadas
+│   └── Arquivos JSON e CSV das medições coletadas
 ├── Doc/
 │   └── memorando_de_decisao_grupo10_2.md
 ├── Notebooks/
