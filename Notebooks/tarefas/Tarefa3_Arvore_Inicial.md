@@ -5,7 +5,7 @@
 
 **Equipe:**  Grupo 10   
 **Scrum Master da tarefa:**  Andrea Ono Sakai   
-**Repositório GitHub:** 
+**Repositório GitHub:** https://github.com/LucasFR-BRZ/Projeto-Preditor-de-Falhas   
 
 > Tarefa 1 coletou. Tarefa 2 fez o baseline e o rótulo. Esta tarefa **não refaz** a ficha nem a tabela de classes.
 >
