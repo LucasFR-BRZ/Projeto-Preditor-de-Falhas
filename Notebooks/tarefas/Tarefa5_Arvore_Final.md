@@ -160,6 +160,7 @@ A avaliação temporal apresentada na seção 2 permanece válida como resultado
 | Integrante | O que fiz nesta tarefa | Dificuldades | O que pretendo manter/ajustar |
 |---|---|---|---|
 |Pedro Gabriel Castro da Silva |Treinei a árvore final com os parâmetros definidos na Tarefa 4, executei a avaliação no teste e registrei a matriz de confusão e as métricas. Também verifiquei a disponibilidade de fluxos para a checagem de generalização. |Não foi encontrado fluxo que atendesse aos critérios de 1.500 RTTs válidos, ausência no treino e presença no teste. Também foi necessário interpretar os erros apesar das métricas elevadas. |Manter as métricas relativas ao baseline, preservar a separação temporal e documentar as limitações dos resultados. |
+| Rodrigo Camargo Vieira| Análise e revisão da tarefa | Pesquisar sobre todas as informações da tarefa para revisão de dados| Manter os dados que estiverem corretos e ajustar apenas os dados que não estão de acordo com a tarefa.|
 
 ---
 
