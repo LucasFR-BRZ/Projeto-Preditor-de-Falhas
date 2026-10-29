@@ -130,7 +130,7 @@ Conclusão: a inclusão do RTT absoluto não alterou o F1 macro nem o atributo u
 | Integrante | O que fiz nesta tarefa | Dificuldades | O que pretendo manter/ajustar |
 |---|---|---|---|
 | Pedro Gabriel Castro da Silva | Treinamento e avaliação inicial da árvore de decisão, análise dos erros de validação e comparação com RTT absoluto. | Interpretar os erros de classificação e avaliar a influência do RTT absoluto. | Manter a separação entre treino, validação e teste e registrar os resultados dos experimentos. |
-| | | | |
+| Rodrigo Camargo Vieira | Revisão da tarefa 3, para possíveis erros de digitação ou informação  | Analisar toda a estrutura  | Ajustar se necessário erros de digitação ou falta de informações. |
 | | | | |
 | | | | |
 | | | | |
