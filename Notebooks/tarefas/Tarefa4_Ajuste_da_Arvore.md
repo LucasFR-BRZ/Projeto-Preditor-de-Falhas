@@ -108,7 +108,7 @@ Os resultados indicam maior capacidade de reproduzir os rótulos utilizados no p
 | Integrante | O que fiz nesta tarefa | Dificuldades | O que pretendo manter/ajustar |
 |---|---|---|---|
 |Pedro Gabriel Castro da Silva | Análise dos erros da Tarefa 3, comparação de parâmetros e avaliação da árvore ajustada na validação. |Seleção dos parâmetros sem aumentar desnecessariamente a complexidade do modelo. |Manter as métricas relativas ao baseline e utilizar a validação para selecionar os parâmetros. |
-|   |   |   |   |   
+| Rodrigo Camargo Vieira   | Análise e revisão do documento da tarefa  | Analisar tópico por tópico para reajuste se necessário  | Manter os dados que estiverem corretos e ajustar apenas as informações que estiverem erradas   |   
 |   |   |   |   |   
 |   |   |   |   |   
 |   |   |   |   |   
